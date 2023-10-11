@@ -16,11 +16,16 @@ public class App {
         ResultSet resultSet = st.executeQuery(query);
         resultSet.next();
 
-        String name = resultSet.getInt(1) + " : " +
-                resultSet.getString(2) + " : " +
-                resultSet.getInt(3);
-        System.out.println(name);
+        String name;
 
+        while (resultSet.next()) {
+
+            name = resultSet.getInt(1) + " : " +
+                    resultSet.getString(2) + " : " +
+                    resultSet.getInt(3);
+
+            System.out.println(name);
+        }
         st.close();
         connection.close();
     }
