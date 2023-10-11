@@ -7,7 +7,7 @@ public class App {
         String url = "jdbc:mysql://localhost:3306/student?useSSL=false";
         String userName = "root";
         String password = "password";
-        String query = "select name from nepal where id=101";
+        String query = "select * from nepal";
 
         Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -15,7 +15,10 @@ public class App {
         Statement st = connection.createStatement();
         ResultSet resultSet = st.executeQuery(query);
         resultSet.next();
-        String name = resultSet.getString("name");
+
+        String name = resultSet.getInt(1) + " : " +
+                resultSet.getString(2) + " : " +
+                resultSet.getInt(3);
         System.out.println(name);
 
         st.close();
